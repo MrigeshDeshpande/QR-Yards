@@ -18,10 +18,11 @@ import {
     Music2,
     ScanLine
 } from "lucide-react";
+import Link from "next/link";
 
 export default function QRTypeGrid() {
     const qrTypes = [
-        { icon: Globe, label: "Website", desc: "Open a URL" },
+        { icon: Globe, label: "Website", desc: "Open a URL", href: "/create/website" },
         { icon: FileText, label: "PDF", desc: "Show a PDF" },
         { icon: ImageIcon, label: "Images", desc: "Show an image gallery" },
         { icon: UserSquare2, label: "vCard Plus", desc: "Share contact details", badge: "PLUS" },
@@ -66,35 +67,49 @@ export default function QRTypeGrid() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {qrTypes.map((type, index) => (
-                    <button
-                        key={index}
-                        className="flex items-center gap-4 p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-500 hover:shadow-md transition-all text-left group"
-                    >
-                        <div
-                            className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                                type.isBarcode ? "text-blue-600" : "text-blue-500"
-                            } bg-blue-50 group-hover:bg-blue-600 group-hover:text-white transition-colors`}
-                        >
-                            <type.icon size={24} strokeWidth={1.5} />
-                        </div>
-                        <div className="flex-1">
-                            <div className="flex items-center gap-2">
-                                <span className="font-semibold text-gray-900">
-                                    {type.label}
-                                </span>
-                                {type.badge && (
-                                    <span className="bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">
-                                        {type.badge}
-                                    </span>
-                                )}
+                {qrTypes.map((type, index) => {
+                    const Content = (
+                        <>
+                            <div
+                                className={`w-12 h-12 rounded-lg flex items-center justify-center ${type.isBarcode ? "text-blue-600" : "text-blue-500"
+                                    } bg-blue-50 group-hover:bg-blue-600 group-hover:text-white transition-colors`}
+                            >
+                                <type.icon size={24} strokeWidth={1.5} />
                             </div>
-                            <p className="text-sm text-gray-500 mt-0.5">
-                                {type.desc}
-                            </p>
-                        </div>
-                    </button>
-                ))}
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2">
+                                    <span className="font-semibold text-gray-900">
+                                        {type.label}
+                                    </span>
+                                    {type.badge && (
+                                        <span className="bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">
+                                            {type.badge}
+                                        </span>
+                                    )}
+                                </div>
+                                <p className="text-sm text-gray-500 mt-0.5">
+                                    {type.desc}
+                                </p>
+                            </div>
+                        </>
+                    );
+
+                    const className = "flex items-center gap-4 p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-500 hover:shadow-md transition-all text-left group w-full";
+
+                    if (type.href) {
+                        return (
+                            <Link key={index} href={type.href} className={className}>
+                                {Content}
+                            </Link>
+                        );
+                    }
+
+                    return (
+                        <button key={index} className={className}>
+                            {Content}
+                        </button>
+                    );
+                })}
             </div>
         </div>
     );
