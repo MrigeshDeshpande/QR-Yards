@@ -8,16 +8,19 @@ import {
     Settings,
     ChevronDown,
     ChevronUp,
-    Globe,
+    FileText,
     Lock,
     Folder,
-    Link as LinkIcon
+    Link as LinkIcon,
+    Upload,
+    Layout
 } from "lucide-react";
 
-export default function WebsiteBuilder() {
+export default function PDFBuilder() {
     const [qrName, setQrName] = useState("");
     const [openSections, setOpenSections] = useState({
         timeScheduling: false,
+        customTemplate: true,
         basicInfo: true,
         stats: false,
         urlConfig: false,
@@ -77,6 +80,63 @@ export default function WebsiteBuilder() {
                     )}
                 </div>
 
+                {/* Custom Template Section */}
+                <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <button
+                        onClick={() => toggleSection('customTemplate')}
+                        className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+                    >
+                        <div className="flex items-start gap-4">
+                            <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
+                                <Layout size={20} />
+                            </div>
+                            <div>
+                                <h3 className="font-semibold text-gray-900">Custom Template</h3>
+                                <p className="text-sm text-gray-500">Choose a pre-designed template for your PDF viewer.</p>
+                            </div>
+                        </div>
+                        {openSections.customTemplate ? <ChevronUp className="text-gray-400" /> : <ChevronDown className="text-gray-400" />}
+                    </button>
+
+                    {openSections.customTemplate && (
+                        <div className="p-6 pt-0 border-t border-gray-100 mt-2">
+                            <div className="space-y-4 mt-4">
+                                <p className="text-sm text-gray-600 mb-4">Select a template style for your PDF display page</p>
+
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="border-2 border-blue-500 bg-blue-50 rounded-lg p-4 cursor-pointer hover:bg-blue-100 transition-colors">
+                                        <div className="aspect-video bg-white rounded mb-2 flex items-center justify-center">
+                                            <FileText size={32} className="text-blue-600" />
+                                        </div>
+                                        <p className="text-sm font-semibold text-gray-900 text-center">Classic</p>
+                                    </div>
+
+                                    <div className="border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <div className="aspect-video bg-gradient-to-br from-purple-100 to-pink-100 rounded mb-2 flex items-center justify-center">
+                                            <FileText size={32} className="text-purple-600" />
+                                        </div>
+                                        <p className="text-sm font-semibold text-gray-900 text-center">Modern</p>
+                                    </div>
+
+                                    <div className="border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded mb-2 flex items-center justify-center">
+                                            <FileText size={32} className="text-white" />
+                                        </div>
+                                        <p className="text-sm font-semibold text-gray-900 text-center">Dark</p>
+                                    </div>
+
+                                    <div className="border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <div className="aspect-video bg-gradient-to-br from-green-100 to-emerald-100 rounded mb-2 flex items-center justify-center">
+                                            <FileText size={32} className="text-green-600" />
+                                        </div>
+                                        <p className="text-sm font-semibold text-gray-900 text-center">Minimal</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
                 {/* Basic Information */}
                 <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
                     <button
@@ -89,7 +149,7 @@ export default function WebsiteBuilder() {
                             </div>
                             <div>
                                 <h3 className="font-semibold text-gray-900">Basic Information</h3>
-                                <p className="text-sm text-gray-500">Add essential information.</p>
+                                <p className="text-sm text-gray-500">Upload your PDF and add essential information.</p>
                             </div>
                         </div>
                         {openSections.basicInfo ? <ChevronUp className="text-gray-400" /> : <ChevronDown className="text-gray-400" />}
@@ -98,32 +158,46 @@ export default function WebsiteBuilder() {
                     {openSections.basicInfo && (
                         <div className="p-6 pt-0 border-t border-gray-100 mt-2">
                             <div className="space-y-4 mt-4">
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">PDF Title</label>
+                                    <input
+                                        type="text"
+                                        placeholder="E.g. Product Catalog 2024"
+                                        className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">Description</label>
+                                    <textarea
+                                        placeholder="Brief description of your PDF"
+                                        rows={3}
+                                        className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">Upload PDF</label>
+                                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition-colors cursor-pointer">
+                                        <Upload size={32} className="mx-auto text-gray-400 mb-2" />
+                                        <p className="text-sm text-gray-600">Click to upload or drag and drop</p>
+                                        <p className="text-xs text-gray-400 mt-1">PDF (MAX. 10MB)</p>
+                                    </div>
+                                    <p className="text-xs text-gray-400 mt-1">Required field</p>
+                                </div>
+
                                 <div className="flex flex-col gap-3">
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" />
                                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                                        <span className="ml-3 text-sm font-medium text-gray-900">Multi-Language Support</span>
+                                        <span className="ml-3 text-sm font-medium text-gray-900">Allow download</span>
                                     </label>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" />
                                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                                        <span className="ml-3 text-sm font-medium text-gray-900">Multi-country support</span>
+                                        <span className="ml-3 text-sm font-medium text-gray-900">Show page counter</span>
                                     </label>
                                 </div>
-
-                                <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2">Website URL</label>
-                                    <input
-                                        type="text"
-                                        placeholder="E.g. https://www.myweb.com/"
-                                        className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
-                                    />
-                                    <p className="text-xs text-gray-400 mt-1">Required field</p>
-                                </div>
-
-                                <button className="px-4 py-2 border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-50">
-                                    Edit parameters
-                                </button>
                             </div>
                         </div>
                     )}

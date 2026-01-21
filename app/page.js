@@ -9,7 +9,7 @@ export default function Home() {
       <Sidebar />
 
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
-        <TopNav />
+        <TopNav currentStep={1} canProceed={false} />
 
         <main className="flex-1 flex overflow-hidden">
           <div className="flex-1 overflow-y-auto pr-[400px]"> {/* pr-[400px] adds space for the fixed PhonePreview */}

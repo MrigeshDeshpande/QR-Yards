@@ -23,7 +23,7 @@ import Link from "next/link";
 export default function QRTypeGrid() {
     const qrTypes = [
         { icon: Globe, label: "Website", desc: "Open a URL", href: "/create/website" },
-        { icon: FileText, label: "PDF", desc: "Show a PDF" },
+        { icon: FileText, label: "PDF", desc: "Show a PDF", href: "/create/pdf" },
         { icon: ImageIcon, label: "Images", desc: "Show an image gallery" },
         { icon: UserSquare2, label: "vCard Plus", desc: "Share contact details", badge: "PLUS" },
         { icon: Video, label: "Video", desc: "Show a video" },

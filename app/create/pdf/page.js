@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Sidebar from "../../components/Sidebar";
 import TopNav from "../../components/TopNav";
-import WebsiteBuilder from "../../components/WebsiteBuilder";
-import WebsitePhonePreview from "../../components/WebsitePhonePreview";
+import PDFBuilder from "../../components/PDFBuilder";
+import PDFPhonePreview from "../../components/PDFPhonePreview";
 import QRDesignBuilder from "../../components/QRDesignBuilder";
 
-export default function WebsiteCreatePage() {
+export default function PDFCreatePage() {
     const router = useRouter();
     const [currentStep, setCurrentStep] = useState(2);
     const [canProceed, setCanProceed] = useState(true); // Enable Next button by default
@@ -45,11 +45,11 @@ export default function WebsiteCreatePage() {
 
                 <main className="flex-1 flex overflow-hidden">
                     <div className="flex-1 overflow-y-auto pr-[400px]">
-                        {currentStep === 2 && <WebsiteBuilder />}
+                        {currentStep === 2 && <PDFBuilder />}
                         {currentStep === 3 && <QRDesignBuilder />}
                     </div>
 
-                    <WebsitePhonePreview />
+                    <PDFPhonePreview />
                 </main>
             </div>
         </div>
