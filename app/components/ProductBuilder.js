@@ -5,35 +5,35 @@ import { Clock, Info, PieChart, Settings, ChevronDown, ChevronUp, Link as LinkIc
 
 export default function ProductBuilder() {
     const [qrName, setQrName] = useState("");
-    const [openSections, setOpenSections] = useState({timeScheduling: false, basicInfo: true, stats: false, urlConfig: false, scanLimit: false, configuration: false});
-    const toggleSection = (section) => {setOpenSections(prev => ({ ...prev, [section]: !prev[section] }))};
+    const [openSections, setOpenSections] = useState({ timeScheduling: false, basicInfo: true, stats: false, urlConfig: false, scanLimit: false, configuration: false });
+    const toggleSection = (section) => { setOpenSections(prev => ({ ...prev, [section]: !prev[section] })) };
 
     return (
         <div className="p-8 max-w-4xl mx-auto pb-32">
             <div className="mb-8"><h1 className="text-2xl font-bold text-gray-900 mb-6">Complete the content of the QR</h1><input type="text" placeholder="Name of your QR code..." value={qrName} onChange={(e) => setQrName(e.target.value)} className="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" /></div>
-            
+
             <div className="space-y-4">
                 <div className="bg-white rounded-xl border border-gray-200 overflow-hidden"><button onClick={() => toggleSection('timeScheduling')} className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"><div className="flex items-start gap-4"><div className="p-2 bg-blue-50 text-blue-600 rounded-lg"><Clock size={20} /></div><div><h3 className="font-semibold text-gray-900">Time Scheduling</h3><p className="text-sm text-gray-500">Create the time ranges for your business and then apply them to your products.</p></div></div>{openSections.timeScheduling ? <ChevronUp className="text-gray-400" /> : <ChevronDown className="text-gray-400" />}</button>{openSections.timeScheduling && (<div className="p-6 pt-0 border-t border-gray-100 mt-2"><label className="relative inline-flex items-center cursor-pointer mt-4"><input type="checkbox" className="sr-only peer" /><div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div><span className="ml-3 text-sm font-medium text-gray-900">Enable time ranges</span></label></div>)}</div>
 
                 <div className="bg-white rounded-xl border border-gray-200 overflow-hidden"><button onClick={() => toggleSection('basicInfo')} className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"><div className="flex items-start gap-4"><div className="p-2 bg-blue-50 text-blue-600 rounded-lg"><Info size={20} /></div><div><h3 className="font-semibold text-gray-900">Basic Information</h3><p className="text-sm text-gray-500">Product configuration details.</p></div></div>{openSections.basicInfo ? <ChevronUp className="text-gray-400" /> : <ChevronDown className="text-gray-400" />}</button>{openSections.basicInfo && (
                     <div className="p-6 pt-0 border-t border-gray-100 mt-2">
                         <div className="space-y-4 mt-4">
-                                <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-2">Product Name</label>
-                                    <input type="text" placeholder="Product name" class="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" />
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-2">Price</label>
-                                    <input type="text" placeholder=".99" class="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" />
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-2">Description</label>
-                                    <textarea placeholder="Product details" rows="3" class="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"></textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-2">Buy URL</label>
-                                    <input type="text" placeholder="https://..." class="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" />
-                                </div>
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Product Name</label>
+                                <input type="text" placeholder="Product name" className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Price</label>
+                                <input type="text" placeholder=".99" className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Description</label>
+                                <textarea placeholder="Product details" rows="3" className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"></textarea>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Buy URL</label>
+                                <input type="text" placeholder="https://..." className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" />
+                            </div>
 
                         </div>
                     </div>
