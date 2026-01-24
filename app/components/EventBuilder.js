@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { Clock, Info, PieChart, Settings, ChevronDown, ChevronUp, Calendar, Upload, Link as LinkIcon } from "lucide-react";
+import { Clock, Info, PieChart, Settings, ChevronDown, ChevronUp, Link as LinkIcon } from "lucide-react";
 
 export default function EventBuilder() {
     const [qrName, setQrName] = useState("");

@@ -37,9 +37,9 @@ export default function BarcodePhonePreview() {
                                     {Array.from({ length: 144 }, (_, i) => (
                                         <div
                                             key={i}
-                                            className={`aspect-square ${Math.random() > 0.5
-                                                    ? "bg-gray-900"
-                                                    : "bg-white"
+                                            className={`aspect-square ${
+                                                // Deterministic pattern based on index to avoid hydration mismatch
+                                                (i % 3 === 0 || i % 7 === 0) ? "bg-gray-900" : "bg-white"
                                                 }`}
                                         ></div>
                                     ))}

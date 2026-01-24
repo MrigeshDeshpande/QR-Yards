@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { User, Info, PieChart, Settings, ChevronDown, ChevronUp, Link as LinkIcon, Phone, Mail, Globe, MapPin, Building2 } from "lucide-react";
+import { Info, PieChart, Settings, ChevronDown, ChevronUp, Link as LinkIcon } from "lucide-react";
 
 export default function VCardBuilder() {
     const [qrName, setQrName] = useState("");

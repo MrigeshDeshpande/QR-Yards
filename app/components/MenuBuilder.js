@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { Clock, Info, PieChart, Settings, ChevronDown, ChevronUp, Utensils, Upload, Link as LinkIcon } from "lucide-react";
+import { Clock, Info, PieChart, Settings, ChevronDown, ChevronUp,  Upload, Link as LinkIcon } from "lucide-react";
 
 export default function MenuBuilder() {
     const [qrName, setQrName] = useState("");

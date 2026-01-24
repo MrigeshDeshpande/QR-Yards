@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { Clock, Info, PieChart, Settings, ChevronDown, ChevronUp, MessageSquare, Upload, Link as LinkIcon } from "lucide-react";
+import { Clock, Info, PieChart, Settings, ChevronDown, ChevronUp, Link as LinkIcon } from "lucide-react";
 
 export default function FeedbackBuilder() {
     const [qrName, setQrName] = useState("");
