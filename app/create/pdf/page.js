@@ -9,49 +9,49 @@ import PDFPhonePreview from "../../components/PDFPhonePreview";
 import QRDesignBuilder from "../../components/QRDesignBuilder";
 
 export default function PDFCreatePage() {
-    const router = useRouter();
-    const [currentStep, setCurrentStep] = useState(2);
-    const [canProceed, setCanProceed] = useState(true); // Enable Next button by default
+  const router = useRouter();
+  const [currentStep, setCurrentStep] = useState(2);
+  const [canProceed, setCanProceed] = useState(true); // Enable Next button by default
 
-    const handleBack = () => {
-        if (currentStep === 2) {
-            // Go back to QR type selection
-            router.push("/");
-        } else if (currentStep === 3) {
-            setCurrentStep(2);
-        }
-    };
+  const handleBack = () => {
+    if (currentStep === 2) {
+      // Go back to QR type selection
+      router.push("/");
+    } else if (currentStep === 3) {
+      setCurrentStep(2);
+    }
+  };
 
-    const handleNext = () => {
-        if (currentStep === 2) {
-            setCurrentStep(3);
-        } else if (currentStep === 3) {
-            // TODO: Save and generate QR code
-            console.log("Generate QR Code");
-        }
-    };
+  const handleNext = () => {
+    if (currentStep === 2) {
+      setCurrentStep(3);
+    } else if (currentStep === 3) {
+      // TODO: Save and generate QR code
+      console.log("Generate QR Code");
+    }
+  };
 
-    return (
-        <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
-            <Sidebar />
+  return (
+    <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
+      <Sidebar />
 
-            <div className="flex-1 flex flex-col h-screen overflow-hidden">
-                <TopNav
-                    currentStep={currentStep}
-                    onBack={handleBack}
-                    onNext={handleNext}
-                    canProceed={canProceed}
-                />
+      <div className="flex-1 flex flex-col h-screen overflow-hidden">
+        <TopNav
+          currentStep={currentStep}
+          onBack={handleBack}
+          onNext={handleNext}
+          canProceed={canProceed}
+        />
 
-                <main className="flex-1 flex overflow-hidden">
-                    <div className="flex-1 overflow-y-auto pr-[400px]">
-                        {currentStep === 2 && <PDFBuilder />}
-                        {currentStep === 3 && <QRDesignBuilder />}
-                    </div>
+        <main className="flex-1 flex overflow-hidden">
+          <div className="flex-1 overflow-y-auto pr-[400px]">
+            {currentStep === 2 && <PDFBuilder />}
+            {currentStep === 3 && <QRDesignBuilder />}
+          </div>
 
-                    <PDFPhonePreview />
-                </main>
-            </div>
-        </div>
-    );
+          <PDFPhonePreview />
+        </main>
+      </div>
+    </div>
+  );
 }

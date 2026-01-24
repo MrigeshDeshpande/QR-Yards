@@ -1,17 +1,17 @@
-import { 
-  PlusCircle, 
-  LayoutGrid, 
-  QrCode, 
-  BarChart2, 
-  Layout, 
-  Globe, 
+import {
+  PlusCircle,
+  LayoutGrid,
+  QrCode,
+  BarChart2,
+  Layout,
+  Globe,
   CreditCard,
   Settings,
   Users,
   Shield,
   MessageSquare,
   HelpCircle,
-  Code
+  Code,
 } from "lucide-react";
 
 export default function Sidebar() {
@@ -29,7 +29,7 @@ export default function Sidebar() {
     { icon: Settings, label: "Settings" },
     { icon: Users, label: "Users" },
   ];
-  
+
   const bottomItems2 = [
     { icon: Shield, label: "Security history" },
     { icon: MessageSquare, label: "Contact" },
@@ -41,7 +41,10 @@ export default function Sidebar() {
     <aside className="w-64 bg-white min-h-screen flex flex-col border-r border-gray-200">
       <div className="p-6">
         <h1 className="text-2xl font-bold text-blue-600 flex items-center gap-2">
-           QRYards <span className="text-gray-400 text-xs border border-gray-300 rounded px-1 ml-auto">⌘</span>
+          QRYards{" "}
+          <span className="text-gray-400 text-xs border border-gray-300 rounded px-1 ml-auto">
+            ⌘
+          </span>
         </h1>
       </div>
 
@@ -62,33 +65,32 @@ export default function Sidebar() {
         ))}
 
         <div className="mt-8 space-y-1">
-            {bottomItems.map((item, index) => (
+          {bottomItems.map((item, index) => (
             <a
-                key={index}
-                href="#"
-                className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
+              key={index}
+              href="#"
+              className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
             >
-                <item.icon size={20} />
-                {item.label}
+              <item.icon size={20} />
+              {item.label}
             </a>
-            ))}
+          ))}
         </div>
-        
-         <div className="mt-8 space-y-1">
-            {bottomItems2.map((item, index) => (
+
+        <div className="mt-8 space-y-1">
+          {bottomItems2.map((item, index) => (
             <a
-                key={index}
-                href="#"
-                className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
+              key={index}
+              href="#"
+              className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
             >
-                {/* Visual grouping spacing */}
-                <div className="w-5" /> 
-                {item.label}
+              {/* Visual grouping spacing */}
+              <div className="w-5" />
+              {item.label}
             </a>
-            ))}
+          ))}
         </div>
       </nav>
-
     </aside>
   );
 }

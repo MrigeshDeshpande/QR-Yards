@@ -12,7 +12,9 @@ export default function Home() {
         <TopNav currentStep={1} canProceed={false} />
 
         <main className="flex-1 flex overflow-hidden">
-          <div className="flex-1 overflow-y-auto pr-[400px]"> {/* pr-[400px] adds space for the fixed PhonePreview */}
+          <div className="flex-1 overflow-y-auto pr-[400px]">
+            {" "}
+            {/* pr-[400px] adds space for the fixed PhonePreview */}
             <QRTypeGrid />
           </div>
 
