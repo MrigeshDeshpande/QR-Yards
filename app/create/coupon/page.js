@@ -9,47 +9,47 @@ import QRDesignBuilder from "../../components/QRDesignBuilder";
 import CouponPhonePreview from "../../components/CouponPhonePreview";
 
 export default function CouponCreatePage() {
-    const router = useRouter();
-    const [currentStep, setCurrentStep] = useState(2);
-    const [canProceed, setCanProceed] = useState(true);
+  const router = useRouter();
+  const [currentStep, setCurrentStep] = useState(2);
+  const [canProceed, setCanProceed] = useState(true);
 
-    const handleBack = () => {
-        if (currentStep === 2) {
-            router.push("/");
-        } else if (currentStep === 3) {
-            setCurrentStep(2);
-        }
-    };
+  const handleBack = () => {
+    if (currentStep === 2) {
+      router.push("/");
+    } else if (currentStep === 3) {
+      setCurrentStep(2);
+    }
+  };
 
-    const handleNext = () => {
-        if (currentStep === 2) {
-            setCurrentStep(3);
-        } else if (currentStep === 3) {
-            console.log("Generate QR Code");
-        }
-    };
+  const handleNext = () => {
+    if (currentStep === 2) {
+      setCurrentStep(3);
+    } else if (currentStep === 3) {
+      console.log("Generate QR Code");
+    }
+  };
 
-    return (
-        <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
-            <Sidebar />
+  return (
+    <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
+      <Sidebar />
 
-            <div className="flex-1 flex flex-col h-screen overflow-hidden">
-                <TopNav
-                    currentStep={currentStep}
-                    onBack={handleBack}
-                    onNext={handleNext}
-                    canProceed={canProceed}
-                />
+      <div className="flex-1 flex flex-col h-screen overflow-hidden">
+        <TopNav
+          currentStep={currentStep}
+          onBack={handleBack}
+          onNext={handleNext}
+          canProceed={canProceed}
+        />
 
-                <main className="flex-1 flex overflow-hidden">
-                    <div className="flex-1 overflow-y-auto pr-[400px]">
-                        {currentStep === 2 && <CouponBuilder />}
-                        {currentStep === 3 && <QRDesignBuilder />}
-                    </div>
+        <main className="flex-1 flex overflow-hidden">
+          <div className="flex-1 overflow-y-auto pr-[400px]">
+            {currentStep === 2 && <CouponBuilder />}
+            {currentStep === 3 && <QRDesignBuilder />}
+          </div>
 
-                    <CouponPhonePreview />
-                </main>
-            </div>
-        </div>
-    );
+          <CouponPhonePreview />
+        </main>
+      </div>
+    </div>
+  );
 }

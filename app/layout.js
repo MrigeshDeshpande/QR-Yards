@@ -23,9 +23,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QRProvider>
-          {children}
-        </QRProvider>
+        <QRProvider>{children}</QRProvider>
       </body>
     </html>
   );
