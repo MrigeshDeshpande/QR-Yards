@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Video as VideoIcon, Info, PieChart, Settings, ChevronDown, ChevronUp, Link as LinkIcon, Upload } from "lucide-react";
+import {Info, PieChart, Settings, ChevronDown, ChevronUp, Link as LinkIcon, Upload } from "lucide-react";
 
 export default function VideoBuilder() {
     const [qrName, setQrName] = useState("");

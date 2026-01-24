@@ -43,7 +43,7 @@ export default function MenuPhonePreview() {
                             <div className="p-4">
                                 <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                                     <span className="w-1 h-6 bg-amber-500 rounded"></span>
-                                    Today's Menu
+                                    Today&apos;s Menu
                                 </h3>
 
                                 <div className="space-y-3">
@@ -67,8 +67,8 @@ export default function MenuPhonePreview() {
                                         <button
                                             key={i}
                                             className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${i === 0
-                                                    ? "bg-amber-500 text-white"
-                                                    : "bg-gray-100 text-gray-700"
+                                                ? "bg-amber-500 text-white"
+                                                : "bg-gray-100 text-gray-700"
                                                 }`}
                                         >
                                             {cat}

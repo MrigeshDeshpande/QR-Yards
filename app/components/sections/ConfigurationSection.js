@@ -1,6 +1,6 @@
 "use client";
 
-import { Settings, ChevronDown } from "lucide-react";
+import { Settings } from "lucide-react";
 import { useQR } from "../../context/QRContext";
 import Accordion from "../ui/Accordion";
 import Switch from "../ui/Switch";
